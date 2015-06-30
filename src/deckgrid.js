@@ -190,6 +190,10 @@ angular.module('akoenig.deckgrid').factory('Deckgrid', [
             var content = $window.getComputedStyle(this.$$elem, ':before').content,
                 layout;
 
+            if (!content || content === '') {
+                content = '4 .column.column-1-4';
+            }
+
             if (content) {
                 content = content.replace(/'/g, '');  // before e.g. '3 .column.size-1of3'
                 content = content.replace(/"/g, '');  // before e.g. "3 .column.size-1of3"

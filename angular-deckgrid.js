@@ -337,6 +337,9 @@ angular.module('akoenig.deckgrid').factory('Deckgrid', [
         Deckgrid.prototype.$$getLayout = function $$getLayout () {
             var content = $window.getComputedStyle(this.$$elem, ':before').content,
                 layout;
+            if (!content || content === '') {
+                content = '4 .column.column-1-4';
+            }
 
             if (content) {
                 content = content.replace(/'/g, '');  // before e.g. '3 .column.size-1of3'
